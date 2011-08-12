@@ -35,7 +35,7 @@ public class CJson {
     try {
       RhinoScriptBuilder builder = null;
       if (scope == null) {
-        builder = RhinoScriptBuilder.newClientSideAwareChain().addJSON().evaluateChain(
+        builder = RhinoScriptBuilder.newClientSideAwareChain().evaluateChain(
           getScriptAsStream(), "cjson.js");
         scope = builder.getScope();
       } else {

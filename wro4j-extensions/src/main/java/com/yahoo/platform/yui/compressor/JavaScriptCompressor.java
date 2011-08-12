@@ -23,7 +23,7 @@ import org.mozilla.javascript.CompilerEnvirons;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
 import org.mozilla.javascript.IRFactory;
-import org.mozilla.javascript.Parser1;
+import org.mozilla.javascript.Parser;
 import org.mozilla.javascript.ScriptRuntime;
 import org.mozilla.javascript.Token;
 import org.mozilla.javascript.ast.AstRoot;
@@ -320,7 +320,10 @@ public class JavaScriptCompressor {
       throws IOException, EvaluatorException {
 
     final CompilerEnvirons env = new CompilerEnvirons();
-    final Parser1 parser = new Parser1(env, reporter);
+    final Parser parser = new Parser(env, reporter);
+
+//    parser.parse(in, null, 1);
+//    final String source = parser.getEncodedSource();
 
     final AstRoot ast = parser.parse(in, null, 1);
     final IRFactory irf = new IRFactory(env, reporter);
@@ -335,7 +338,7 @@ public class JavaScriptCompressor {
     while (offset < length) {
       final int tt = source.charAt(offset++);
       switch (tt) {
-        case Token.COMMENT:
+//        case Token.COMMENT:
         case Token.NAME:
         case Token.REGEXP:
         case Token.STRING:

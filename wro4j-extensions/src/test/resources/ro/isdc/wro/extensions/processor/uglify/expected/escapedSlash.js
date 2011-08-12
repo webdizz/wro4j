@@ -1,1 +1,1 @@
-alert(1)
+var str="\\";str!=="\\"&&alert(1)

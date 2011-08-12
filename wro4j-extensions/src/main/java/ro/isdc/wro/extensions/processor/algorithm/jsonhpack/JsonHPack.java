@@ -34,7 +34,7 @@ public class JsonHPack {
     try {
       RhinoScriptBuilder builder = null;
       if (scope == null) {
-        builder = RhinoScriptBuilder.newClientSideAwareChain().addJSON().evaluateChain(
+        builder = RhinoScriptBuilder.newClientSideAwareChain().evaluateChain(
           getScriptAsStream(), "json.hpack.js");
         scope = builder.getScope();
       } else {
